@@ -1,9 +1,21 @@
 #include <iostream>
-
 using namespace std;
 
-int main()
+#include "game.h"
+
+int main(int argc, char** argv)
 {
-    cout << "Hello World!" << endl;
+    Game game;
+    game.initSDL();
+    game.initIMG();
+    game.createMainWindow(new Window("Window", {800, 600}));
+    game.start();
+
+    while(game.isRunning()){
+        game.handleEvents();
+        game.update();
+        game.render();
+    }
+
     return 0;
 }

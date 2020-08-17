@@ -1,7 +1,7 @@
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 
-#include <vector>
+#include <map>
 #include <string>
 using namespace std;
 
@@ -15,7 +15,7 @@ public:
     Entity& addEntity(string name);
 
 private:
-    vector<Entity*> entities;
+    map<string, Entity*> entities;
 };
 
 #endif // ENTITYMANAGER_H

@@ -4,3 +4,8 @@ Entity::Entity()
 {
 
 }
+
+Entity::~Entity()
+{
+
+}
