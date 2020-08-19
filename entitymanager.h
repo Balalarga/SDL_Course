@@ -13,6 +13,11 @@ public:
     EntityManager();
     ~EntityManager();
     Entity& addEntity(string name);
+    Entity* getEntity(string name);
+    int entitiesCount() const;
+    void update(float dt);
+    void render();
+    void printEntityList();
 
 private:
     map<string, Entity*> entities;

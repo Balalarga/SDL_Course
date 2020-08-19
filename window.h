@@ -11,11 +11,11 @@ using namespace std;
 class Window
 {
 public:
+    static SDL_Renderer* renderer;
+
     Window(const string& title, iSize size,
            iPoint pos = {SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED});
     ~Window();
-
-    SDL_Renderer* getRenderer();
 
     void show();
     void hide();
@@ -25,7 +25,6 @@ public:
 
 private:
     SDL_Window* window;
-    SDL_Renderer* renderer;
 
     iSize windowSize;
     iPoint windowPos;

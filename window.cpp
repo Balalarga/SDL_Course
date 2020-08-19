@@ -1,5 +1,7 @@
 #include "window.h"
 
+SDL_Renderer* Window::renderer = nullptr;
+
 Window::Window(const string &title, iSize size, iPoint pos):
     windowSize(size),
     windowPos(pos),
@@ -21,11 +23,6 @@ Window::~Window()
 {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-}
-
-SDL_Renderer *Window::getRenderer()
-{
-    return renderer;
 }
 
 void Window::show()

@@ -19,12 +19,17 @@ SOURCES += \
         entitymanager.cpp \
         game.cpp \
         main.cpp \
+        texturemanager.cpp \
         window.cpp
 
 HEADERS += \
+    animation.h \
+    Components/spritecomponent.h \
+    Components/transrormcomponent.h \
     component.h \
     entity.h \
     entitymanager.h \
     game.h \
+    texturemanager.h \
     utils.h \
     window.h
