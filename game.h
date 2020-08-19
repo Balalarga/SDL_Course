@@ -1,12 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <include/SDL2/SDL.h>
+#include <include/SDL2/SDL_image.h>
 
-#include "window.h"
+#include "./window.h"
 #include "utils.h"
-#include "entitymanager.h"
+#include "./entitymanager.h"
 #include "Components/transrormcomponent.h"
 #include <Components/spritecomponent.h>
 

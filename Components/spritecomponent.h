@@ -79,7 +79,6 @@ private:
     Animation* currentAnim;
     bool isAnimated = false;
     bool isFixed = false;
-
 };
 
 #endif // SPRITECOMPONENT_H
