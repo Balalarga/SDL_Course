@@ -54,3 +54,13 @@ void Window::swapBuffers()
 {
     SDL_RenderPresent(renderer);
 }
+
+int Window::width() const
+{
+    return windowSize.w;
+}
+
+int Window::height() const
+{
+    return windowSize.h;
+}

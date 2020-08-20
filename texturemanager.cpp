@@ -1,6 +1,9 @@
 #include "texturemanager.h"
 #include "game.h"
 
+#include <iostream>
+using namespace std;
+
 TextureManager* TextureManager::m_instance = nullptr;
 
 TextureManager *TextureManager::instance()

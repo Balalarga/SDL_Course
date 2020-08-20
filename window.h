@@ -23,6 +23,9 @@ public:
     void clear();
     void swapBuffers();
 
+    int width() const;
+    int height() const;
+
 private:
     SDL_Window* window;
 

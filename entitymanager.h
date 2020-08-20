@@ -10,9 +10,9 @@ using namespace std;
 class EntityManager
 {
 public:
-    EntityManager();
+    static EntityManager* instance();
     ~EntityManager();
-    Entity& addEntity(string name);
+    Entity& addEntity(string name, int layer);
     Entity* getEntity(string name);
     int entitiesCount() const;
     void update(float dt);
@@ -20,6 +20,9 @@ public:
     void printEntityList();
 
 private:
+    EntityManager();
+    static EntityManager* sInstance;
+
     map<string, Entity*> entities;
 };
 

@@ -1,16 +1,16 @@
-#ifndef TRANSRORMCOMPONENT_H
-#define TRANSRORMCOMPONENT_H
+#ifndef TRANSFORMCOMPONENT_H
+#define TRANSFORMCOMPONENT_H
 
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include "../component.h"
-#include "../entitymanager.h"
-#include "../utils.h"
-#include "../game.h"
+#include "component.h"
+#include "entitymanager.h"
+#include "utils.h"
+#include "game.h"
 
 
-class TransrormComponent: public Component
+class TransformComponent: public Component
 {
     friend class SpriteComponent;
 
@@ -19,7 +19,7 @@ public:
     fPoint velocity;
     iSize size;
     iSize scale;
-    TransrormComponent(float posX, float posY,
+    TransformComponent(float posX, float posY,
                        float velX, float velY,
                        int sizeX, int sizeY,
                        int scaleX, int scaleY):
@@ -38,4 +38,4 @@ public:
     }
 };
 
-#endif // TRANSRORMCOMPONENT_H
+#endif // TRANSFORMCOMPONENT_H

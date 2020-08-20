@@ -15,9 +15,10 @@ class Entity
 
 public:
     string name;
+    int layer;
 
     Entity(EntityManager& manager);
-    Entity(EntityManager& manager, string name);
+    Entity(EntityManager& manager, string name, int layer);
     ~Entity();
 
     template<typename T, typename... TArgs>

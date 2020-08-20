@@ -6,14 +6,17 @@
 
 #include "./window.h"
 #include "utils.h"
+#include "map.h"
 #include "./entitymanager.h"
-#include "Components/transrormcomponent.h"
+#include "Components/transformcomponent.h"
 #include <Components/spritecomponent.h>
+#include <Components/keyboardcomponent.h>
 
 class Game
 {
 public:
-    static SDL_Renderer* getRenderer();
+    static SDL_Event event;
+    static SDL_Rect camera;
 
     Game();
     ~Game();
@@ -30,11 +33,12 @@ public:
     void start();
 
 private:
-    EntityManager entityManager;
     Window* mainWindow = nullptr;
     bool running = false;
+    Map* map;
 
     void loadLevel(int i);
+    void handleCameraMovement();
 };
 
 #endif // GAME_H

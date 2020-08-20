@@ -6,8 +6,9 @@ Entity::Entity(EntityManager &manager):
 {
 }
 
-Entity::Entity(EntityManager &manager, string name):
+Entity::Entity(EntityManager &manager, string name, int layer):
     name(name),
+    layer(layer),
     manager(manager)
 {
 }

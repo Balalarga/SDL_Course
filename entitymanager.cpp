@@ -1,7 +1,17 @@
 #include "entitymanager.h"
 
+EntityManager* EntityManager::sInstance = nullptr;
+
 EntityManager::EntityManager()
 {
+}
+
+EntityManager *EntityManager::instance()
+{
+    if(!sInstance)
+        sInstance = new EntityManager;
+    return sInstance;
+
 }
 
 EntityManager::~EntityManager()
@@ -31,8 +41,12 @@ void EntityManager::update(float dt)
 
 void EntityManager::render()
 {
-    for(auto& e: entities)
-        e.second->render();
+    for(int i = 0; i < 5; i++){
+        for(auto& e: entities){
+            if(e.second->layer == i)
+                e.second->render();
+        }
+    }
 }
 
 #include <iostream>
@@ -40,18 +54,18 @@ void EntityManager::render()
 void EntityManager::printEntityList()
 {
     for(auto& e: entities){
-         cout<<"Entity("<<e.second->name<<")\n";
+        cout<<"Entity("<<e.second->name<<")\n";
         for(auto& c: e.second->components){
             cout<<"\tCompontent<"<<c.first->name()<<">\n";
         }
     }
 }
 
-Entity& EntityManager::addEntity(string name)
+Entity& EntityManager::addEntity(string name, int layer)
 {
     // TODO: log collision
 
     if(entities.find(name) == entities.end())
-        entities[name] = new Entity(*this, name);
+        entities[name] = new Entity(*this, name, layer);
     return *entities[name];
 }
