@@ -35,8 +35,8 @@ void SpriteComponent::init(){
     transform = owner->getComponent<TransformComponent>();
     srcRect.x = 0;
     srcRect.y = 0;
-    srcRect.w = transform->size.h;
-    srcRect.h = transform->size.h;
+    srcRect.w = transform->size.y;
+    srcRect.h = transform->size.y;
 }
 
 void SpriteComponent::update(float dt){
@@ -44,13 +44,13 @@ void SpriteComponent::update(float dt){
     if(isAnimated){
         srcRect.x = srcRect.w*
                 static_cast<int>((SDL_GetTicks()/currentAnim->animSpeed)%currentAnim->animFrames);
-        srcRect.y = transform->size.w * currentAnim->animIndex;
+        srcRect.y = transform->size.x * currentAnim->animIndex;
     }
 
     destRect.x = static_cast<int>(transform->pos.x);
     destRect.y = static_cast<int>(transform->pos.y);
-    destRect.w = transform->size.w * transform->scale.w;
-    destRect.h = transform->size.h * transform->scale.h;
+    destRect.w = transform->size.x * transform->scale.x;
+    destRect.h = transform->size.y * transform->scale.y;
     if(!isFixed){
         destRect.y -= Game::camera.y;
         destRect.x -= Game::camera.x;

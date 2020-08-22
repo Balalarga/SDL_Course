@@ -77,7 +77,7 @@ void Game::loadLevel(int i){
     tank.addComponent<ColliderComponent>("enemy", 0, 300, 32*scale, 32*scale, "colliderBox");
 
     SDL_Color whiteColor = {255, 255, 255, 255};
-    iPoint labelPos = {10, 10};
+    ivec2 labelPos = {10, 10};
     Entity& label = EntityManager::instance()->addEntity("label", 3);
     label.addComponent<LabelComponent>(labelPos, "First level", "charriot", whiteColor);
 }

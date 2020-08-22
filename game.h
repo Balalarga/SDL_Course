@@ -4,9 +4,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <glm/glm.hpp>
+using namespace glm;
 
 #include "map.h"
-#include "utils.h"
 #include "window.h"
 #include "entitymanager.h"
 #include <Components/spritecomponent.h>

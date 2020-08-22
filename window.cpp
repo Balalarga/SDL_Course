@@ -2,14 +2,14 @@
 
 SDL_Renderer* Window::renderer = nullptr;
 
-Window::Window(const string &title, iSize size, iPoint pos):
+Window::Window(const string &title, ivec2 size, ivec2 pos):
     windowSize(size),
     windowPos(pos),
     windowClearColor({100, 100, 100, 255})
 {
     // TODO: add log information
 
-    window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, size.w, size.h, SDL_WINDOW_HIDDEN);
+    window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, size.x, size.y, SDL_WINDOW_HIDDEN);
     if(!window)
         return;
 
@@ -57,10 +57,10 @@ void Window::swapBuffers()
 
 int Window::width() const
 {
-    return windowSize.w;
+    return windowSize.x;
 }
 
 int Window::height() const
 {
-    return windowSize.h;
+    return windowSize.y;
 }

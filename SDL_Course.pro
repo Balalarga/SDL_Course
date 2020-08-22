@@ -47,7 +47,6 @@ HEADERS += \
     game.h \
     map.h \
     texturemanager.h \
-    utils.h \
     window.h
 
 DISTFILES += \

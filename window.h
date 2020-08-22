@@ -2,19 +2,20 @@
 #define WINDOW_H
 
 #include <SDL2/SDL.h>
+#include <glm/glm.hpp>
+using namespace glm;
 
 #include <string>
 using namespace std;
 
-#include "utils.h"
 
 class Window
 {
 public:
     static SDL_Renderer* renderer;
 
-    Window(const string& title, iSize size,
-           iPoint pos = {SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED});
+    Window(const string& title, ivec2 size,
+           ivec2 pos = {SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED});
     ~Window();
 
     void show();
@@ -29,8 +30,8 @@ public:
 private:
     SDL_Window* window;
 
-    iSize windowSize;
-    iPoint windowPos;
+    ivec2 windowSize;
+    ivec2 windowPos;
     SDL_Color windowClearColor;
 };
 

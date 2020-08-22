@@ -16,7 +16,7 @@ Map::~Map()
 {
 }
 
-void Map::loadFrom(string filePath, iSize mapSize)
+void Map::loadFrom(string filePath, ivec2 mapSize)
 {
     ifstream file(filePath);
     if(!file){
@@ -24,9 +24,9 @@ void Map::loadFrom(string filePath, iSize mapSize)
         return;
     }
     char ch;
-    iPoint srcPos;
-    for(int y = 0; y < mapSize.h; y++){
-        for(int x = 0; x < mapSize.w; x++){
+    ivec2 srcPos;
+    for(int y = 0; y < mapSize.y; y++){
+        for(int x = 0; x < mapSize.x; x++){
             file.get(ch);
             srcPos.y = atoi(&ch)*tileSize;
             file.get(ch);
@@ -38,7 +38,7 @@ void Map::loadFrom(string filePath, iSize mapSize)
     file.close();
 }
 
-void Map::addTile(iPoint srcPos, iPoint mapPos)
+void Map::addTile(ivec2 srcPos, ivec2 mapPos)
 {
     Entity& tile = EntityManager::instance()->addEntity("Tile"+to_string(tileCount++), 0);
     tile.addComponent<TileComponent>(textureId, srcPos, mapPos, tileSize, scale);

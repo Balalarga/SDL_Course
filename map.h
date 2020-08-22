@@ -2,7 +2,9 @@
 #define MAP_H
 
 #include <string>
-#include "utils.h"
+#include <glm/glm.hpp>
+using namespace glm;
+
 using namespace std;
 
 class Map
@@ -11,8 +13,8 @@ public:
     Map(string textureId, int scale, int tileSize);
     ~Map();
 
-    void loadFrom(string filePath, iSize mapSize);
-    void addTile(iPoint srcPos, iPoint mapPos);
+    void loadFrom(string filePath, ivec2 mapSize);
+    void addTile(ivec2 srcPos, ivec2 mapPos);
 
 private:
     int tileCount = 0;

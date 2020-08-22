@@ -10,7 +10,7 @@ ColliderComponent::ColliderComponent(const string &tag, int x, int y, int w, int
 void ColliderComponent::init(){
     if(owner->hasComponent<TransformComponent>()){
         transform = owner->getComponent<TransformComponent>();
-        srcRect = {0, 0, transform->size.w, transform->size.h};
+        srcRect = {0, 0, transform->size.x, transform->size.y};
         dstRect = collider;
     }
 }
@@ -20,8 +20,8 @@ void ColliderComponent::update(float dt){
         return;
     collider.x = static_cast<int>(transform->pos.x);
     collider.y = static_cast<int>(transform->pos.y);
-    collider.w = transform->size.w*transform->scale.w;
-    collider.h = transform->size.h*transform->scale.h;
+    collider.w = transform->size.x*transform->scale.x;
+    collider.h = transform->size.y*transform->scale.y;
     dstRect.x = collider.x-Game::camera.x;
     dstRect.y = collider.y-Game::camera.y;
 }

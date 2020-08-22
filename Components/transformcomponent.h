@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <glm/glm.hpp>
+using namespace glm;
 
 #include "component.h"
 #include "entitymanager.h"
-#include "utils.h"
 #include "game.h"
 
 
@@ -15,10 +16,10 @@ class TransformComponent: public Component
     friend class SpriteComponent;
 
 public:
-    fPoint pos;
-    fPoint velocity;
-    iSize size;
-    iSize scale;
+    fvec2 pos;
+    fvec2 velocity;
+    ivec2 size;
+    ivec2 scale;
     TransformComponent(float posX, float posY,
                        float velX, float velY,
                        int sizeX, int sizeY,

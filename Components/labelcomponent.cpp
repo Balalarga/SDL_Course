@@ -1,6 +1,6 @@
 #include "labelcomponent.h"
 
-LabelComponent::LabelComponent(iPoint pos, string text, string fontFamily, SDL_Color color):
+LabelComponent::LabelComponent(ivec2 pos, string text, string fontFamily, SDL_Color color):
     text(text),
     fontFamily(fontFamily),
     fontColor(color)
