@@ -23,19 +23,19 @@ void KeyboardComponent::update(float dt)
 {
     if(Game::event.type == SDL_KEYDOWN){
         if(Game::event.key.keysym.sym == keyMapping["left"]){
-            transform->velocity.x = -50;
+            transform->velocity.x = -100;
             transform->velocity.y = 0;
             sprite->play("left");
         }else if(Game::event.key.keysym.sym == keyMapping["right"]){
-            transform->velocity.x = 50;
+            transform->velocity.x = 100;
             transform->velocity.y = 0;
             sprite->play("right");
         }else if(Game::event.key.keysym.sym == keyMapping["up"]){
-            transform->velocity.y = -50;
+            transform->velocity.y = -100;
             transform->velocity.x = 0;
             sprite->play("up");
         }else if(Game::event.key.keysym.sym == keyMapping["down"]){
-            transform->velocity.y = 50;
+            transform->velocity.y = 100;
             transform->velocity.x = 0;
             sprite->play("down");
         }

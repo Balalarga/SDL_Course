@@ -1,16 +1,19 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <include/SDL2/SDL.h>
-#include <include/SDL2/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
-#include "./window.h"
-#include "utils.h"
 #include "map.h"
-#include "./entitymanager.h"
-#include "Components/transformcomponent.h"
+#include "utils.h"
+#include "window.h"
+#include "entitymanager.h"
 #include <Components/spritecomponent.h>
+#include "Components/transformcomponent.h"
 #include <Components/keyboardcomponent.h>
+#include <Components/collidercomponent.h>
+#include <Components/labelcomponent.h>
 
 class Game
 {
@@ -20,6 +23,7 @@ public:
 
     Game();
     ~Game();
+    bool initTTF();
     bool initSDL(int flags = SDL_INIT_EVERYTHING);
     bool initIMG(int flags = IMG_INIT_JPG|IMG_INIT_PNG);
     bool initLogic();
@@ -39,6 +43,7 @@ private:
 
     void loadLevel(int i);
     void handleCameraMovement();
+    void checkCollisions();
 };
 
 #endif // GAME_H

@@ -11,6 +11,9 @@ int main(int argc, char** argv)
     game.initSDL();
     cout<<"Init sdl\n";
 
+    game.initTTF();
+    cout<<"Init ttf\n";
+
     game.initIMG();
     cout<<"Init img\n";
 

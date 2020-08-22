@@ -1,4 +1,7 @@
 #include "entitymanager.h"
+#include <iostream>
+#include "Components/collidercomponent.h"
+#include "collisionmanager.h"
 
 EntityManager* EntityManager::sInstance = nullptr;
 
@@ -49,14 +52,41 @@ void EntityManager::render()
     }
 }
 
-#include <iostream>
-
 void EntityManager::printEntityList()
 {
     for(auto& e: entities){
         cout<<"Entity("<<e.second->name<<")\n";
         for(auto& c: e.second->components){
             cout<<"\tCompontent<"<<c.first->name()<<">\n";
+        }
+    }
+}
+
+string EntityManager::checkEntityCollision(string tag)
+{
+    Entity* e = getEntity(tag);
+    if(!e)
+        return "";
+    ColliderComponent* collider = e->getComponent<ColliderComponent>();
+    for(auto& pair: entities){
+        if(pair.second != e &&
+                pair.second->hasComponent<ColliderComponent>()){
+            ColliderComponent* otherCollider =
+                    pair.second->getComponent<ColliderComponent>();
+            if(CollisionManager::checkCollision(collider->collider, otherCollider->collider)){
+                return otherCollider->colliderTag;
+            }
+        }
+    }
+    return "";
+}
+
+void EntityManager::tuggleColliderBox()
+{
+    for(auto& e: entities){
+        if(e.second->hasComponent<ColliderComponent>()){
+           e.second->getComponent<ColliderComponent>()->showBox =
+                   !e.second->getComponent<ColliderComponent>()->showBox;
         }
     }
 }

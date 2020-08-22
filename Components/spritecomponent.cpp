@@ -44,8 +44,8 @@ void SpriteComponent::update(float dt){
     if(isAnimated){
         srcRect.x = srcRect.w*
                 static_cast<int>((SDL_GetTicks()/currentAnim->animSpeed)%currentAnim->animFrames);
+        srcRect.y = transform->size.w * currentAnim->animIndex;
     }
-    srcRect.y = transform->size.w * currentAnim->animIndex;
 
     destRect.x = static_cast<int>(transform->pos.x);
     destRect.y = static_cast<int>(transform->pos.y);

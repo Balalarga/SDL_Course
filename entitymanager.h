@@ -18,6 +18,8 @@ public:
     void update(float dt);
     void render();
     void printEntityList();
+    string checkEntityCollision(string tag);
+    void tuggleColliderBox();
 
 private:
     EntityManager();
