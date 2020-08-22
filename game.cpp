@@ -44,10 +44,11 @@ bool Game::initIMG(int flags)
 
 void Game::loadLevel(int i){
     // Init textures
+    TextureManager::instance()->addSprite("tank", "../assets/images/tank-big-right.png");
+    TextureManager::instance()->addSprite("radar", "../assets/images/radar.png");
+    TextureManager::instance()->addSprite("bullet", "../assets/images/bullet-enemy.png");
     TextureManager::instance()->addSprite("chopper", "../assets/images/chopper-spritesheet.png");
     TextureManager::instance()->addSprite("tilemap", "../assets/images/tilemap.png");
-    TextureManager::instance()->addSprite("radar", "../assets/images/radar.png");
-    TextureManager::instance()->addSprite("tank", "../assets/images/tank-big-right.png");
     TextureManager::instance()->addSprite("colliderBox", "../assets/images/collision-texture.png");
 
     FontManager::instance()->addFont("../assets/fonts/charriot.ttf", "charriot", 14);
@@ -71,10 +72,17 @@ void Game::loadLevel(int i){
     radar.addComponent<SpriteComponent>("radar", 8, 90, false, true);
 
     Entity& tank = EntityManager::instance()->addEntity("tank", 2);
-    tank.addComponent<TransformComponent>(0, 300, 0, 0,
+    tank.addComponent<TransformComponent>(100, 400, 0, 0,
                                             32, 32, scale, scale);
     tank.addComponent<SpriteComponent>("tank");
     tank.addComponent<ColliderComponent>("enemy", 0, 300, 32*scale, 32*scale, "colliderBox");
+
+    Entity& bullet = EntityManager::instance()->addEntity("bullet", 2);
+    bullet.addComponent<TransformComponent>(100+16, 400+16, 0, 0,
+                                            4, 4, scale, scale);
+    bullet.addComponent<SpriteComponent>("bullet");
+    bullet.addComponent<ColliderComponent>("bullet", 100+16, 400+16, 4*scale, 4*scale, "colliderBox");
+    bullet.addComponent<ProjectileEmmiterComponent>(50, 270, 200, true);
 
     SDL_Color whiteColor = {255, 255, 255, 255};
     ivec2 labelPos = {10, 10};
@@ -140,6 +148,8 @@ void Game::checkCollisions()
     string collisionTarget = EntityManager::instance()->checkEntityCollision("player");
     if(collisionTarget == "enemy"){
         cout<<"Collision with enemy\n";
+    }else if(collisionTarget == "bullet"){
+        stop();
     }
 }
 

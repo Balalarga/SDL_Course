@@ -15,6 +15,7 @@ using namespace glm;
 #include <Components/keyboardcomponent.h>
 #include <Components/collidercomponent.h>
 #include <Components/labelcomponent.h>
+#include <Components/projectileemmitercomponent.h>
 
 class Game
 {

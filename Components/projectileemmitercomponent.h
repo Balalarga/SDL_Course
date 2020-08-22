@@ -13,7 +13,6 @@ public:
                                int range, bool isLooping);
 
     void update(float dt) override;
-    void render() override;
     void init() override;
 
 private:

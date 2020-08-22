@@ -38,8 +38,13 @@ int EntityManager::entitiesCount() const
 
 void EntityManager::update(float dt)
 {
-    for(auto& e: entities)
-        e.second->update(dt);
+    for(auto& e: entities){
+        if(!e.second->active){
+            entities.erase(entities.find(e.first));
+            delete e.second;
+        }else
+            e.second->update(dt);
+    }
 }
 
 void EntityManager::render()
